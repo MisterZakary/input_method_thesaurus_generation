@@ -1,0 +1,2 @@
+# input_method_thesaurus_generation
+根据提供的短语或者字词生成可以导入到百度、搜狗、手心等输入法的词库。
