@@ -8,7 +8,7 @@ from pypinyin import pinyin, Style
 
 # 生成拼音
 def convert_to_pinyin(text):
-    pinyin_list = pinyin(text, style=Style.NORMAL, heteronym=True,errors="ignore")
+    pinyin_list = pinyin(text, style=Style.NORMAL, heteronym=False,errors="ignore")
     pinyin_str = "'".join([''.join(char) for char in pinyin_list])
     return pinyin_str
 
@@ -16,8 +16,6 @@ def convert_to_pinyin(text):
 def read_file_in_chunks(file_path, output_file_name, output_encoding, output_format, chunk_size=100):
     with open(file_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()
-        if lines[-1] == '\n':
-            lines = lines[:-1]  # 如果最后一行是空白行，则删除
         for line in lines:
             pinyin_line = convert_to_pinyin(line.strip())
             
@@ -36,15 +34,15 @@ args = parser.parse_args()
 
 # 根据命令行参数选择输出文件名、编码格式和格式
 if args.output_format == 'baidu':
-    output_file_name = '百度.txt'
+    output_file_name = 'Zakary百度词库.txt'
     output_encoding = 'utf-16'
     output_format = 'baidu'
 elif args.output_format == 'shouxin':
-    output_file_name = '手心.txt'
+    output_file_name = 'Zakary手心词库.txt'
     output_encoding = 'utf-16'
     output_format = 'shouxin'
 elif args.output_format == 'sougou':
-    output_file_name = '搜狗.txt'
+    output_file_name = 'Zakary搜狗词库.txt'
     output_encoding = 'cp936'
     output_format = 'sougou'
 
